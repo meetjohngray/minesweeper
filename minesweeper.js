@@ -1,6 +1,35 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
+// const board = (size) => {
+//   let cells = []
+//   console.log(cells)
+//   for (let i = 1; i <= size; i++){
+//     console.log('Hello')
+//     cell[i] = {row: i, col: i, isMine: true, hidden: true}
+//   }
+
+// }
+
+// var board = {}
+// board.cells = []
+// let colNum = 1
+// let colNum2 = 1
+// let colNum3 = 1
+// for (var x = 0; x < 9; x++) {
+//   if (x <= 2) {
+//     board['cells'][x] = {row: 1, col: colNum, isMine: false, hidden: true}
+//     colNum++
+//   } else if (x > 2 && x < 6) {
+//     board['cells'][x] = {row: 2, col: colNum2, isMine: false, hidden: true}
+//     colNum2++
+//   } else {
+//     board['cells'][x] = {row: 3, col: colNum3, isMine: false, hidden: true}
+//     colNum3++
+//   }  
+// }
+//  console.log(board)
+
 var board = {
   cells: [{row: 1, col: 1, isMine: false, hidden: true},
     {row: 1, col: 2, isMine: false, hidden: true},
@@ -13,6 +42,7 @@ var board = {
     {row: 3, col: 3, isMine: false, hidden: true}
   ]
 }
+console.log(board)
 
 function startGame () {
   for ( i=0; i < board.cells.length; i++) {
@@ -25,7 +55,6 @@ function startGame () {
 }
 
 // Define this function to look for a win condition:
-//
 // 1. Are all of the cells that are NOT mines visible?
 // 2. Are all of the mines marked?
 function checkForWin () {
@@ -46,20 +75,15 @@ function checkForWin () {
       count3++
     }
 
-    if (board.cells[i].hidden === false){
+    if (board.cells[i].isMarked === true){
       count4++
     }
   }
-  console.log(count3)
-  console.log(count4)
-  console.log(board)
-
-    // if (count3 === count4) {
-    //   console.log("YES")
-    //   // You can use this function call to declare a winner (once you've
-    //   // detected that they've won, that is!)
-    //   lib.displayMessage('You win!')
-    // }
+    if ((count1 === count2) && (count3 === count4)) {    
+    // You can use this function call to declare a winner (once you've
+  // detected that they've won, that is!)
+      lib.displayMessage('You win!')
+    }
 }
 
 
