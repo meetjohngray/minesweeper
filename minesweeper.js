@@ -8,29 +8,6 @@ document.addEventListener('DOMContentLoaded', startGame)
 //     console.log('Hello')
 //     cell[i] = {row: i, col: i, isMine: true, hidden: true}
 //   }
-
-// }
-
-// function makeBoard() {
-//   board = {}
-//   board.cells = []
-//   let colNum = 1
-//   let colNum2 = 1
-//   let colNum3 = 1
-//   for (var x = 0; x < 9; x++) {
-//     if (x <= 2) {
-//       board['cells'][x] = {row: 1, col: colNum, isMine: Math.random() >= 0.5, hidden: true}
-//       colNum++
-//     } else if (x > 2 && x < 6) {
-//       board['cells'][x] = {row: 2, col: colNum2, isMine: Math.random() >= 0.5, hidden: true}
-//       colNum2++
-//     } else {
-//       board['cells'][x] = {row: 3, col: colNum3, isMine: Math.random() >= 0.5, hidden: true}
-//       colNum3++
-//     } 
-//   }
-//   console.log(board)
-//   return board 
 // }
 
 // Thanks Cam Shaw! https://camshaw11.github.io/minesweeper/
@@ -38,7 +15,6 @@ function makeBoard() {
   board = {}
   grid = 5
   board.cells = []
-   
   // every time the outer loop runs once -
   // the inner loop runs 3 times, giving our grid shape
   // ex. row 0 = col 1, 2, 3
@@ -55,42 +31,11 @@ function makeBoard() {
       board.cells.push(cell)
     } 
   }
-    
-  //   board['cells'][x] = {row: 1, col: x + 1, isMine: Math.random() >= 0.5, hidden: true}
-  //     for (var i = 1; i <= 3; i++) {
-  //      board['cells'][x]['col'] = i
-  //      for (var j = 1; j <= 3; j++){
-  //        board['cells'][x]['col'] = j
-  //      }
-  //   }
-  // }
-   console.log(board)
-    return board 
+  //console.log(board)
+  return board 
 }
   
-makeBoard()
-
-//board.cells = [{row: '', col: '', isMine: Math.random() >= 0.5, hidden: true}]
-  //var num = 1
-  // let colNum2 = 1
-  // let colNum3 = 1
-
-   //  for (var x = 0; x <= 3; x++) { 
-      //   board['cells'][x] = {row: '', col: '', isMine: Math.random() >= 0.5, hidden: true}
-      //   board['cells'][x]['row'] = x + 1
-      //   board['cells'][x]['col'] = x + 1
-  //   if (x <= 2) {
-  //     board['cells'][x] = {row: 1, col: colNum, isMine: Math.random() >= 0.5, hidden: true}
-  //     colNum++
-  //   } else if (x > 2 && x < 6) {
-  //     board['cells'][x] = {row: 2, col: colNum2, isMine: Math.random() >= 0.5, hidden: true}
-  //     colNum2++
-  //   } else {
-  //     board['cells'][x] = {row: 3, col: colNum3, isMine: Math.random() >= 0.5, hidden: true}
-  //     colNum3++
-//}
-//console.log(board)
-
+//makeBoard()
 // var board = {
 //   cells: [{row: 1, col: 1, isMine: Math.random() >= 0.5, hidden: true},
 //     {row: 1, col: 2, isMine: Math.random() >= 0.5, hidden: true},
@@ -106,25 +51,45 @@ makeBoard()
 //console.log(board)
 
 function startGame () {
+  makeBoard()
   for ( i=0; i < board.cells.length; i++) {
     board.cells[i].surroundingMines = countSurroundingMines(board.cells[i])
     document.addEventListener("click", checkForWin)
     document.addEventListener("contextmenu", checkForWin)
-    document.addEventListener("contextmenu", checkForWin)
   }
+  document.getElementById("reset").addEventListener("click", resetBoard)
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
 }
 
-// function resetGame () {
-//   //document.addEventListener("contextmenu", startGame)
-//   document.getElementsByClassName("reset").addEventListener("click", startGame);
-//document.getElementById("reset").addEventListener("click", myFunction);
-  
-function myFunction() {
-    alert("Hello World");
+function resetBoard(){
+  //alert("Hello World")
+  let hiddenCells = document.getElementsByClassName("hidden")
+  let markedCells = document.getElementsByClassName("marked")
+  //let notHidden = document.getElementsByClassName('board').classList.contains("hidden")
+  //console.log(hiddenCells)
+  console.log(markedCells)
+  for (j=0; j < board.cells.length; j++) {
+    //if document.getElement('div').classList.contains("hidden")
+   // hiddenCells[j].classList.add('hidden')
+    markedCells[j].classList.remove('marked')
   }
-myFunction();
+  //delete board
+ //startGame()
+}
+// function resetGame () {
+// document.getElementById("reset").addEventListener("click", myFunction());
+// }
+
+// document.getElementById("reset").addEventListener("click", function(){
+//   alert("Hello World");
+// })
+
+
+// function myFunction() {
+//     alert("Hello World");
+//   }
+//myFunction();
 //}
 
 // Define this function to look for a win condition:
@@ -180,3 +145,57 @@ function countSurroundingMines (cell) {
     }
   return count
 }
+
+
+// function makeBoard() {
+//   board = {}
+//   board.cells = []
+//   let colNum = 1
+//   let colNum2 = 1
+//   let colNum3 = 1
+//   for (var x = 0; x < 9; x++) {
+//     if (x <= 2) {
+//       board['cells'][x] = {row: 1, col: colNum, isMine: Math.random() >= 0.5, hidden: true}
+//       colNum++
+//     } else if (x > 2 && x < 6) {
+//       board['cells'][x] = {row: 2, col: colNum2, isMine: Math.random() >= 0.5, hidden: true}
+//       colNum2++
+//     } else {
+//       board['cells'][x] = {row: 3, col: colNum3, isMine: Math.random() >= 0.5, hidden: true}
+//       colNum3++
+//     } 
+//   }
+//   console.log(board)
+//   return board 
+// }
+
+//   board['cells'][x] = {row: 1, col: x + 1, isMine: Math.random() >= 0.5, hidden: true}
+  //     for (var i = 1; i <= 3; i++) {
+  //      board['cells'][x]['col'] = i
+  //      for (var j = 1; j <= 3; j++){
+  //        board['cells'][x]['col'] = j
+  //      }
+  //   }
+  // }
+
+
+  //board.cells = [{row: '', col: '', isMine: Math.random() >= 0.5, hidden: true}]
+  //var num = 1
+  // let colNum2 = 1
+  // let colNum3 = 1
+
+   //  for (var x = 0; x <= 3; x++) { 
+      //   board['cells'][x] = {row: '', col: '', isMine: Math.random() >= 0.5, hidden: true}
+      //   board['cells'][x]['row'] = x + 1
+      //   board['cells'][x]['col'] = x + 1
+  //   if (x <= 2) {
+  //     board['cells'][x] = {row: 1, col: colNum, isMine: Math.random() >= 0.5, hidden: true}
+  //     colNum++
+  //   } else if (x > 2 && x < 6) {
+  //     board['cells'][x] = {row: 2, col: colNum2, isMine: Math.random() >= 0.5, hidden: true}
+  //     colNum2++
+  //   } else {
+  //     board['cells'][x] = {row: 3, col: colNum3, isMine: Math.random() >= 0.5, hidden: true}
+  //     colNum3++
+//}
+//console.log(board)
