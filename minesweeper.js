@@ -11,48 +11,121 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // }
 
-// var board = {}
-// board.cells = []
-// let colNum = 1
-// let colNum2 = 1
-// let colNum3 = 1
-// for (var x = 0; x < 9; x++) {
-//   if (x <= 2) {
-//     board['cells'][x] = {row: 1, col: colNum, isMine: false, hidden: true}
-//     colNum++
-//   } else if (x > 2 && x < 6) {
-//     board['cells'][x] = {row: 2, col: colNum2, isMine: false, hidden: true}
-//     colNum2++
-//   } else {
-//     board['cells'][x] = {row: 3, col: colNum3, isMine: false, hidden: true}
-//     colNum3++
-//   }  
+// function makeBoard() {
+//   board = {}
+//   board.cells = []
+//   let colNum = 1
+//   let colNum2 = 1
+//   let colNum3 = 1
+//   for (var x = 0; x < 9; x++) {
+//     if (x <= 2) {
+//       board['cells'][x] = {row: 1, col: colNum, isMine: Math.random() >= 0.5, hidden: true}
+//       colNum++
+//     } else if (x > 2 && x < 6) {
+//       board['cells'][x] = {row: 2, col: colNum2, isMine: Math.random() >= 0.5, hidden: true}
+//       colNum2++
+//     } else {
+//       board['cells'][x] = {row: 3, col: colNum3, isMine: Math.random() >= 0.5, hidden: true}
+//       colNum3++
+//     } 
+//   }
+//   console.log(board)
+//   return board 
 // }
-//  console.log(board)
 
-var board = {
-  cells: [{row: 1, col: 1, isMine: false, hidden: true},
-    {row: 1, col: 2, isMine: false, hidden: true},
-    {row: 1, col: 3, isMine: false, hidden: true},
-    {row: 2, col: 1, isMine: true, hidden: true},
-    {row: 2, col: 2, isMine: true, hidden: true},
-    {row: 2, col: 3, isMine: false, hidden: true},
-    {row: 3, col: 1, isMine: false, hidden: true},
-    {row: 3, col: 2, isMine: true, hidden: true},
-    {row: 3, col: 3, isMine: false, hidden: true}
-  ]
+// Thanks Cam Shaw! https://camshaw11.github.io/minesweeper/
+function makeBoard() {
+  board = {}
+  grid = 5
+  board.cells = []
+   
+  // every time the outer loop runs once -
+  // the inner loop runs 3 times, giving our grid shape
+  // ex. row 0 = col 1, 2, 3
+  for (let i = 0; i < grid; i++) {
+    for(let j = 0; j < grid; j++) {
+      let cell = {
+        row: i,
+        col: j,
+        isMine: Math.random() >= 0.8,  // 20% chance of true
+        //isMarked: false,
+        hidden: true
+      }
+      //push new object to cells array
+      board.cells.push(cell)
+    } 
+  }
+    
+  //   board['cells'][x] = {row: 1, col: x + 1, isMine: Math.random() >= 0.5, hidden: true}
+  //     for (var i = 1; i <= 3; i++) {
+  //      board['cells'][x]['col'] = i
+  //      for (var j = 1; j <= 3; j++){
+  //        board['cells'][x]['col'] = j
+  //      }
+  //   }
+  // }
+   console.log(board)
+    return board 
 }
-console.log(board)
+  
+makeBoard()
+
+//board.cells = [{row: '', col: '', isMine: Math.random() >= 0.5, hidden: true}]
+  //var num = 1
+  // let colNum2 = 1
+  // let colNum3 = 1
+
+   //  for (var x = 0; x <= 3; x++) { 
+      //   board['cells'][x] = {row: '', col: '', isMine: Math.random() >= 0.5, hidden: true}
+      //   board['cells'][x]['row'] = x + 1
+      //   board['cells'][x]['col'] = x + 1
+  //   if (x <= 2) {
+  //     board['cells'][x] = {row: 1, col: colNum, isMine: Math.random() >= 0.5, hidden: true}
+  //     colNum++
+  //   } else if (x > 2 && x < 6) {
+  //     board['cells'][x] = {row: 2, col: colNum2, isMine: Math.random() >= 0.5, hidden: true}
+  //     colNum2++
+  //   } else {
+  //     board['cells'][x] = {row: 3, col: colNum3, isMine: Math.random() >= 0.5, hidden: true}
+  //     colNum3++
+//}
+//console.log(board)
+
+// var board = {
+//   cells: [{row: 1, col: 1, isMine: Math.random() >= 0.5, hidden: true},
+//     {row: 1, col: 2, isMine: Math.random() >= 0.5, hidden: true},
+//     {row: 1, col: 3, isMine: Math.random() >= 0.5, hidden: true},
+//     {row: 2, col: 1, isMine: Math.random() >= 0.5, hidden: true},
+//     {row: 2, col: 2, isMine: Math.random() >= 0.5, hidden: true},
+//     {row: 2, col: 3, isMine: Math.random() >= 0.5, hidden: true},
+//     {row: 3, col: 1, isMine: Math.random() >= 0.5, hidden: true},
+//     {row: 3, col: 2, isMine: Math.random() >= 0.5, hidden: true},
+//     {row: 3, col: 3, isMine: Math.random() >= 0.5, hidden: true}
+//   ]
+// }
+//console.log(board)
 
 function startGame () {
   for ( i=0; i < board.cells.length; i++) {
     board.cells[i].surroundingMines = countSurroundingMines(board.cells[i])
     document.addEventListener("click", checkForWin)
     document.addEventListener("contextmenu", checkForWin)
+    document.addEventListener("contextmenu", checkForWin)
   }
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
 }
+
+// function resetGame () {
+//   //document.addEventListener("contextmenu", startGame)
+//   document.getElementsByClassName("reset").addEventListener("click", startGame);
+//document.getElementById("reset").addEventListener("click", myFunction);
+  
+function myFunction() {
+    alert("Hello World");
+  }
+myFunction();
+//}
 
 // Define this function to look for a win condition:
 // 1. Are all of the cells that are NOT mines visible?
