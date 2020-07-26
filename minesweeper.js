@@ -35,7 +35,7 @@ function makeBoard() {
   return board 
 }
   
-//makeBoard()
+makeBoard()
 // var board = {
 //   cells: [{row: 1, col: 1, isMine: Math.random() >= 0.5, hidden: true},
 //     {row: 1, col: 2, isMine: Math.random() >= 0.5, hidden: true},
@@ -57,26 +57,27 @@ function startGame () {
     document.addEventListener("click", checkForWin)
     document.addEventListener("contextmenu", checkForWin)
   }
-  document.getElementById("reset").addEventListener("click", resetBoard)
+  // document.getElementById("reset").addEventListener("click", resetBoard)
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
 }
 
-function resetBoard(){
-  //alert("Hello World")
-  let hiddenCells = document.getElementsByClassName("hidden")
-  let markedCells = document.getElementsByClassName("marked")
-  //let notHidden = document.getElementsByClassName('board').classList.contains("hidden")
-  //console.log(hiddenCells)
-  console.log(markedCells)
-  for (j=0; j < board.cells.length; j++) {
-    //if document.getElement('div').classList.contains("hidden")
-   // hiddenCells[j].classList.add('hidden')
-    markedCells[j].classList.remove('marked')
-  }
+// function resetBoard(){
+//   //alert("Hello World")
+//   let hiddenCells = document.getElementsByClassName("hidden")
+//   let markedCells = document.getElementsByClassName("marked")
+//   //let notHidden = document.getElementsByClassName('board').classList.contains("hidden")
+//   //console.log(hiddenCells)
+//   console.log(markedCells)
+//   for (j=0; j < board.cells.length; j++) {
+//     //if document.getElement('div').classList.contains("hidden")
+//    // hiddenCells[j].classList.add('hidden')
+//     markedCells[j].classList.remove('marked')
+//     console.log('Hi')
+//   }
   //delete board
  //startGame()
-}
+// }
 // function resetGame () {
 // document.getElementById("reset").addEventListener("click", myFunction());
 // }
