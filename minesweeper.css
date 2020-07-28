@@ -1,3 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+box-sizing: inherit;
+}
+
 html, body {
   height: 100%;
   font-family: 'Open Sans', sans-serif
@@ -8,12 +19,26 @@ body {
   align-items: center;
   justify-content: flex-center;
   flex-direction: column;
+  background: url(https://wallpapercave.com/wp/7KOoNAq.jpg) no-repeat center center fixed;
+  background-size: cover;
 }
 
+#header {
+  font-family: 'Black Ops One', cursive;
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  margin: .5rem 0;
+}
 #message, #notes {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'Black Ops One', cursive;
+  margin-bottom: 1rem;
 }
 
 #message {
@@ -63,4 +88,8 @@ div.marked, div.marked:hover {
   margin-top: 2rem;
   padding: 1rem;
   border-radius: .75rem;
+}
+
+#button {
+  margin-bottom: 2rem;
 }

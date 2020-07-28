@@ -2,17 +2,21 @@
 <html>
   <head>
     <title>Minesweeper</title>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="minesweeper.css">
     <script src="lib/tests.js"></script>
     <script src="lib/lib.js"></script>
     <script src="minesweeper.js"></script>
   </head>
   <body>
-      <audio id="bomb-sound" src="bomb.wav" type="audio/wav"></audio>
+    <audio id="bomb-sound" src="bomb.wav" type="audio/wav"></audio>
+    <div id="header">
+      <h1>mine sweeper</h1>
+    </div>
     <div id="message"></div>
     <div id="notes"></div>
     <div class="board"></div>
-    <div>
+    <div id="button">
       <button id="reset">Play Again?</button>
     </div>
   </body>
