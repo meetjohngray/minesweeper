@@ -121,6 +121,11 @@ function countSurroundingMines (cell) {
   return count
 }
 
+// Bomb Sound Function
+function play() {
+  let audio = document.getElementById("bomb-sound")
+  audio.play()
+}
 
 // function makeBoard() {
 //   board = {}
