@@ -127,6 +127,12 @@ function play() {
   audio.play()
 }
 
+// Board Shake when bomb
+function shake() {
+  let shakeBoard = document.getElementById("board")
+  shakeBoard.classList.add("shake-board")
+}
+
 // function makeBoard() {
 //   board = {}
 //   board.cells = []
